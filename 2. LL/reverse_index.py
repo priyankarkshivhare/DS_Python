@@ -33,25 +33,32 @@ class LinkedList:
 
     def reverse_between(self, start_index, end_index):
         if self.length < 2:
-            print("BP2")
+            print("BP0")
             return None
+        before = before_node = start_node = end_node = after_node = None
         temp = self.head
-        for i in range(end_index+1):
+        for i in range(self.length):
+            if i == start_index - 1:
+                before_node = temp
             if i == start_index:
-                before = None
-                current = temp
-                after = current.next
+                start_node = temp
+            if i == end_index:
+                end_node = temp
+            if i == end_index + 1:
+                after_node = temp
 
-                for _ in range(end_index - start_index + 1):
-                    after = current.next
-                    current.next = before
-                    before = current
-                    current = after
+            after = temp.next
 
-            #     print (f"BP1: {temp.value}")
-            # temp = temp.next
-
-
+            if i >= start_index and i <= end_index:
+                temp.next = before
+                before = temp
+            temp = after
+        if before_node is not None:
+            before_node.next = end_node
+        else: 
+            self.head = end_node
+        if after_node is not None:
+            start_node.next = after_node
 
 linked_list = LinkedList(1)
 linked_list.append(2)

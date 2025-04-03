@@ -50,19 +50,21 @@ class LinkedList:
     #   | - The 'values' set holds unique items seen so far.|
     #   +===================================================+
     def remove_duplicates(self):
-        prev = self.head
+        before = None
+        temp = self.head
         new_set = set(())
-        new_set.add(prev.value)
-        for _ in range(self.length -1):
-            temp = prev.next
+        for _ in range(self.length):
+            after = temp.next
             if temp.value not in new_set:
                 new_set.add(temp.value)
+                before = temp
             else:
-                prev.next = temp.next
+                before.next = temp.next
+                temp.next = None
                 self.length -= 1
 
             print(new_set)
-            prev = prev.next
+            temp = after
             
 
 
