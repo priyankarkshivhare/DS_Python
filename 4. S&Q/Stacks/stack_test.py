@@ -8,7 +8,7 @@ from stack import Stack
 
 def stack_as_list(stack):
     """
-    Test any Stack with the expected Values
+    Returns stack as list
     """
     # Collect values from the stack and compare
     result_values = []
@@ -19,6 +19,7 @@ def stack_as_list(stack):
     return result_values
 
 def test_all_functions():
+    """Test Stack Functionality"""
     try:
         my_stack = Stack(1)
         assert stack_as_list(my_stack) == [1]

@@ -6,9 +6,9 @@ Date: April 12, 2025
 """
 from queue import Queue
 
-def test_stack(test_name, queue, expected_values):
+def queue_as_list(queue):
     """
-    Test any Queue with the expected Values
+    Returns queue as list
     """
     # Collect values from the stack and compare
     result_values = []
@@ -16,29 +16,52 @@ def test_stack(test_name, queue, expected_values):
     while node:
         result_values.append(node.value)
         node = node.next
+    return result_values
 
-    # Determine if the test passes
-    if result_values == expected_values:
-        print(f"{test_name}:Test PASS")
-    else:
-        print(f"{test_name}:Test FAIL")
-    print(f"Expected: {expected_values}")
-    print(f"Result: {result_values}\n")
+def test_all_functions():
+    """Test Stack Functionality"""
+    try:
+        my_queue = Queue(1)
+        assert queue_as_list(my_queue) == [1]
+        print('Test case 1 passed')
+    except AssertionError:
+        print('Test case 1 failed')
 
+    try:
+        my_queue = Queue(1)
+        my_queue.enqueue(2)
+        my_queue.enqueue(3)
+        my_queue.enqueue(4)
+        assert queue_as_list(my_queue) == [1, 2, 3, 4]
+        print('Test case 2 passed')
+    except AssertionError:
+        print('Test case 2 failed')
 
-# Test 1: Constructor
-my_queue = Queue(1)
-test_stack("TEST_CONSTRUCTOR", my_queue, [1])
+    try:
+        my_queue = Queue()
+        my_queue.enqueue(2)
+        my_queue.enqueue(3)
+        my_queue.enqueue(4)
+        assert queue_as_list(my_queue) == [2, 3, 4]
+        print('Test case 3 passed')
+    except AssertionError:
+        print('Test case 3 failed')
 
-my_queue.enqueue(2)
-my_queue.enqueue(3)
-my_queue.enqueue(4)
-test_stack("TEST_ENQUEUE", my_queue, [1, 2, 3, 4])
+    try:
+        assert my_queue.dequeue().value == 2
+        assert queue_as_list(my_queue) == [3, 4]
+        print('Test case 4 passed')
+    except AssertionError:
+        print('Test case 4 failed')
 
-my_queue.dequeue()
-test_stack("TEST_DEQUEUE", my_queue, [2, 3, 4])
-my_queue.dequeue()
-my_queue.dequeue()
-my_queue.dequeue()
-my_queue.dequeue()
-test_stack("TEST_DEQUEUE", my_queue, [])
+    try:
+        my_queue.dequeue()
+        my_queue.dequeue()
+        my_queue.dequeue()
+        my_queue.dequeue()
+        assert queue_as_list(my_queue) == []
+        print('Test case 5 passed')
+    except AssertionError:
+        print('Test case 5 failed')
+
+test_all_functions()
