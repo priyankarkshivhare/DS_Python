@@ -1,0 +1,123 @@
+
+\section{Queue}
+
+\subsection{Introduction to Queues}
+A \textbf{Queue} is a linear data structure that follows the \textbf{FIFO (First In, First Out)} principle. The first element added is the first to be removed. Think of a line at a ticket counter — the first person to enter the line is served first.
+
+\subsection{Common Applications of Queues}
+
+Queues are widely used in computer science and real-world systems where data needs to be processed in the order it arrives (FIFO). Some common applications include:
+
+\begin{itemize}
+    \item \textbf{Task Scheduling:} Operating systems use queues to schedule tasks, processes, and threads for execution.
+    
+    \item \textbf{Print Queue:} Print jobs sent to a printer are lined up in a queue and processed one at a time in the order received.
+    
+    \item \textbf{CPU Scheduling:} Queues manage processes waiting for CPU time using algorithms like Round-Robin and FCFS (First Come, First Served).
+    
+    \item \textbf{Breadth-First Search (BFS):} Graph traversal algorithms like BFS rely on queues to maintain the order of visiting nodes.
+    
+    \item \textbf{Data Buffers:} Used in IO Buffers, data streams, and network data packets where data arrives and is processed in order.
+    
+    \item \textbf{Call Centers and Customer Service:} Calls or tickets are handled in the order they are received.
+    
+    \item \textbf{Asynchronous Data Transfer:} Queues help in handling asynchronous tasks such as background job processing (e.g., task queues in web servers).
+    
+    \item \textbf{Simulation Systems:} Modeling real-world systems like checkout lines in supermarkets or customer service desks.
+\end{itemize}
+
+\subsection{Queue Operations}
+
+\begin{center}
+\begin{tabular}{|l|l|c|}
+\hline
+\textbf{Operation} & \textbf{Description} & \textbf{Time Complexity} \\
+\hline
+Enqueue & Add item to the end (tail) & $O(1)$ \\
+Dequeue & Remove item from the front (head) & $O(1)$ \\
+Peek    & View front item without removing & $O(1)$ \\
+isEmpty & Check if queue is empty & $O(1)$ \\
+Size    & Get number of elements & $O(1)$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Queue Implementation: Enqueue and Dequeue}
+
+\subsubsection*{Enqueue (Add to the Back)}
+
+\begin{itemize}
+    \item Enqueue is the process of adding an item to the \textbf{end (rear)} of the queue.
+    \item If the queue is empty, both \texttt{first} and \texttt{last} pointers point to the new node.
+    \item If the queue is not empty, the current \texttt{last.next} points to the new node, and then \texttt{last} is updated to the new node.
+    \item The \texttt{length} of the queue is incremented by one.
+    \item Time Complexity: $\mathcal{O}(1)$.
+\end{itemize}
+
+\textbf{Python-like pseudocode for enqueue:}
+\begin{verbatim}
+def enqueue(self, value):
+    new_node = Node(value)
+    if self.length == 0:
+        self.first = new_node
+        self.last = new_node
+    else:
+        self.last.next = new_node
+        self.last = new_node
+    self.length += 1
+    return True
+\end{verbatim}
+
+\subsubsection*{Dequeue (Remove from the Front)}
+
+\begin{itemize}
+    \item Dequeue removes the item from the \textbf{front} of the queue.
+    \item If the queue is empty, return \texttt{None}.
+    \item Store the current \texttt{first} in a temp variable.
+    \item If the queue has only one node, set both \texttt{first} and \texttt{last} to \texttt{None}.
+    \item Otherwise, set \texttt{first} to \texttt{first.next}, and disconnect temp's \texttt{next} pointer.
+    \item Decrease the \texttt{length} by one.
+    \item Return the temp node.
+    \item Time Complexity: $\mathcal{O}(1)$.
+\end{itemize}
+
+\textbf{Python-like pseudocode for dequeue:}
+\begin{verbatim}
+def dequeue(self):
+    if self.length == 0:
+        return None
+    temp = self.first
+    if self.length == 1:
+        self.first = None
+        self.last = None
+    else:
+        self.first = self.first.next
+        temp.next = None
+    self.length -= 1
+    return temp
+\end{verbatim}
+
+\subsection{Visualizing Queue Operations}
+
+\subsubsection*{Enqueue Operation}
+\begin{enumerate}
+    \item Initial Queue: [ ]
+    \item After \texttt{enqueue(1)}: [ 1 ]
+    \item After \texttt{enqueue(2)}: [ 1 $\rightarrow$ 2 ]
+    \item After \texttt{enqueue(3)}: [ 1 $\rightarrow$ 2 $\rightarrow$ 3 ]
+\end{enumerate}
+
+\subsubsection*{Dequeue Operation}
+\begin{enumerate}
+    \item Stack before pop: [ 1 $\rightarrow$ 2 $\rightarrow$ 3 ]
+    \item After \texttt{Dequeue()}: [ 2 $\rightarrow$ 3 ]
+    \item The dequeued value is \texttt{1}.
+\end{enumerate}
+
+\subsection{Queue Variants}
+
+\begin{itemize}[itemsep=0.5em]
+    \item \textbf{Circular Queue} — reuses space efficiently
+    \item \textbf{Deque} — double-ended queue
+    \item \textbf{Priority Queue} — based on priority, not order
+\end{itemize}
