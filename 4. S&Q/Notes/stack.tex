@@ -1,0 +1,108 @@
+\section{Stacks}
+\subsection{Introduction to Stacks}
+
+A stack is a linear data structure that follows the \textbf{LIFO (Last In, First Out)} principle.
+The last element added (pushed) to the stack is the first one to be removed (popped).
+
+Think of a stack as a \textbf{can of tennis balls}: You can only access the ball on the top of the can.
+To access a ball lower down, you must first remove the balls above it.
+\textbf{LIFO Principle}: ``Last in, first out."
+
+\subsection{Common Applications of Stacks}
+\begin{itemize}
+    \item \textbf{Web Browsing}: When navigating between websites, a stack keeps track of the pages visited. The \textbf{Back button} pops off the top of the stack to go to the previous page.
+    \item \textbf{Expression Evaluation}: Stacks are used in parsing expressions, especially for evaluating postfix or prefix expressions.
+    \item \textbf{Undo/Redo Operations}: In text editors or design software, stacks keep track of changes so users can undo or redo actions.
+\end{itemize}
+
+\subsection{Basic Operations of a Stack}
+
+\begin{itemize}
+    \item \textbf{Push}: Adds a new item at the top of the stack.
+    \item \textbf{Pop}: Removes the item from the top of the stack.
+    \item \textbf{Peek}: Allows you to view the item at the top of the stack without removing it.
+    \item \textbf{Is Empty}: Checks if the stack is empty.
+    \item \textbf{Size}: Returns the number of elements in the stack.
+\end{itemize}
+
+\subsection{Implementing Push and Pop}
+
+\subsubsection*{Push Method (Adding to the Stack)}
+The \texttt{push} method adds a new node to the top of the stack.
+
+\textbf{Steps:}
+\begin{enumerate}
+    \item Create a new node.
+    \item If the stack is empty, set \texttt{top} to the new node.
+    \item If the stack has items, set the new node's \texttt{next} pointer to the current \texttt{top}, then update \texttt{top} to the new node.
+    \item Increment the height of the stack.
+\end{enumerate}
+
+\begin{verbatim}
+def push(self, value):
+    new_node = Node(value)
+    if self.height == 0:
+        self.top = new_node
+    else:
+        new_node.next = self.top
+        self.top = new_node
+    self.height += 1
+\end{verbatim}
+
+\subsubsection*{Pop Method (Removing from the Stack)}
+The \texttt{pop} method removes the node from the top of the stack.
+
+\textbf{Steps:}
+\begin{enumerate}
+    \item If the stack is empty, return \texttt{None}.
+    \item Store the current \texttt{top} node in a temporary variable.
+    \item Update the \texttt{top} pointer to point to the next node.
+    \item Set the next pointer of the popped node to \texttt{None}.
+    \item Decrement the height of the stack and return the popped node.
+\end{enumerate}
+
+\begin{verbatim}
+def pop(self):
+    if self.height == 0:
+        return None
+    temp = self.top
+    self.top = self.top.next
+    temp.next = None
+    self.height -= 1
+    return temp
+\end{verbatim}
+
+\subsection{Visualizing Stack Operations}
+
+\subsubsection*{Push Operation}
+\begin{enumerate}
+    \item Initial stack: [ ]
+    \item After \texttt{push(1)}: [ 1 ]
+    \item After \texttt{push(2)}: [ 2 $\rightarrow$ 1 ]
+    \item After \texttt{push(3)}: [ 3 $\rightarrow$ 2 $\rightarrow$ 1 ]
+\end{enumerate}
+
+\subsubsection*{Pop Operation}
+\begin{enumerate}
+    \item Stack before pop: [ 3 $\rightarrow$ 2 $\rightarrow$ 1 ]
+    \item After \texttt{pop()}: [ 2 $\rightarrow$ 1 ]
+    \item The popped value is \texttt{3}.
+\end{enumerate}
+
+\subsection{Time Complexity}
+
+\begin{itemize}
+    \item \textbf{Push}: O(1) (Adding an item to the top of the stack takes constant time).
+    \item \textbf{Pop}: O(1) (Removing the top item takes constant time).
+    \item \textbf{Peek}: O(1) (Accessing the top item takes constant time).
+    \item \textbf{Is Empty}: O(1) (Checking if the stack is empty takes constant time).
+    \item \textbf{Size}: O(1) (The size of the stack is tracked, so it takes constant time).
+\end{itemize}
+
+\subsection{Conclusion}
+
+Stacks are a simple yet powerful data structure that operates on the \textbf{LIFO} principle.
+Stacks can be implemented using Python lists or more efficiently using \texttt{deque}.
+A linked-list implementation of a stack provides more flexibility, though with added complexity.
+Stacks have a wide range of applications, from managing function calls in recursion to web browsing history.
+
