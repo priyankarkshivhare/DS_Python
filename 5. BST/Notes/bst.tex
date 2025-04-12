@@ -1,0 +1,93 @@
+\documentclass{thesisnotes}
+\begin{document}
+
+\begin{tcolorbox}[mytitlebox, title=Binary Search Trees]
+  Date: \today
+\end{tcolorbox}
+\section{Binary Search Trees (BST)}
+
+\subsection{What is a Binary Search Tree?}
+A \textbf{Binary Search Tree} is a type of binary tree that maintains a specific order:
+\begin{itemize}
+    \item For any node:
+    \begin{itemize}
+        \item All values in the \textbf{left subtree} are \textbf{less} than the node's value.
+        \item All values in the \textbf{right subtree} are \textbf{greater} than the node's value.
+    \end{itemize}
+\end{itemize}
+This structure makes BSTs powerful for efficient searching, insertion, and deletion.
+
+\subsection{Terminology}
+\begin{itemize}
+    \item \textbf{Root}: The topmost node in the tree.
+    \item \textbf{Leaf}: A node with no children.
+    \item \textbf{Child}: A node directly connected below another node.
+    \item \textbf{Parent}: A node directly connected above another node.
+    \item \textbf{Left Child}: A child node whose value is less than its parent.
+    \item \textbf{Right Child}: A child node whose value is greater than its parent.
+\end{itemize}
+
+\subsection{Applications of Binary Search Trees}
+
+Binary Search Trees (BSTs) are widely used in computer science and software development due to their efficient search, insert, and delete operations. Here are some common applications:
+
+\begin{itemize}
+    \item \textbf{Databases and File Systems:} BSTs are used in implementing indexes, enabling efficient searching, insertion, and deletion of records.
+
+    \item \textbf{Symbol Tables and Maps:} Programming languages and compilers often use BSTs (or their self-balancing variants like AVL or Red-Black Trees) to manage symbol tables.
+
+    \item \textbf{Auto-complete Features:} BSTs can store dictionary words or phrases to enable predictive text and auto-completion functionalities.
+
+    \item \textbf{Network Routing Algorithms:} Routing tables in networks can be optimized using BSTs to allow faster IP lookup and pathfinding.
+
+    \item \textbf{Sorting Algorithms:} Tree sort is a sorting algorithm that builds a BST from the elements to be sorted and then traverses the tree in-order to produce the sorted output.
+
+    \item \textbf{Memory Management:} Operating systems may use BSTs to manage free memory segments, enabling fast allocation and deallocation.
+
+    \item \textbf{Prefix Matching and Range Queries:} BSTs allow efficient prefix and range searches, which are useful in many search engine and query optimization scenarios.
+\end{itemize}
+
+
+\subsection{Insert Method}
+Add a new node in its correct position following BST rules.
+\begin{itemize}
+    \item If the root is \texttt{None}, set the root to the new node.
+    \item Else:
+    \begin{itemize}
+        \item Start at the root.
+        \item Use a pointer (\texttt{temp}) to traverse.
+        \item If new value $<$ \texttt{temp.value}, go left.
+        \item If new value $>$ \texttt{temp.value}, go right.
+        \item Repeat until the correct spot is found.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Contains Method}
+Check if a value exists in the BST.
+\begin{itemize}
+    \item If the tree is empty (\texttt{root} is \texttt{None}), return \texttt{False}.
+    \item Use \texttt{temp} to traverse from the root.
+    \item While \texttt{temp} is not \texttt{None}:
+    \begin{itemize}
+        \item If \texttt{value} == \texttt{temp.value}: return \texttt{True}.
+        \item If \texttt{value} $<$ \texttt{temp.value}: go left.
+        \item If \texttt{value} $>$ \texttt{temp.value}: go right.
+    \end{itemize}
+    \item If we hit \texttt{None}, return \texttt{False} (value not found).
+\end{itemize}
+
+\subsection{Time Complexity (Average Case)}
+
+\begin{tabular}{|c|c|}
+\hline
+Operation & Time Complexity \\
+\hline
+Insert    & O(log n) \\
+Search    & O(log n) \\
+\hline
+\end{tabular}
+
+\textbf{Note:} Worst-case time is O(n) when the tree is unbalanced (e.g., like a linked list).
+
+
+\end{document}
