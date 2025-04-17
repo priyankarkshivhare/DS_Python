@@ -1,6 +1,6 @@
 """
 Filename: ht.py
-Desription: Creates and manages aHash Table
+Desription: Creates and manages a Hash Table
 Author: Priyankar Shivhare
 Date: April 17, 2025
 """
