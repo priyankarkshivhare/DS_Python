@@ -56,7 +56,7 @@ def test_all_functions():
         print('Test case 7 passed')
     except AssertionError:
         print('Test case 7 failed')
-    
+
     try:
         my_graph = Graph()
         my_graph.add_vertex('A')
@@ -73,7 +73,7 @@ def test_all_functions():
         print('Test case 8 failed')
 
     try:
-        assert my_graph.remove_edge('B', 'C') is True 
+        assert my_graph.remove_edge('B', 'C') is True
         assert my_graph.remove_vertex('B') is True # Test Remove Vertex with no edges
         print('Test case 9 passed')
     except AssertionError:

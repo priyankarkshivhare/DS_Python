@@ -1,0 +1,34 @@
+\section{Graphs}
+
+\subsection{What is a Graph?}
+A graph is a non-linear data structure consisting of \textbf{vertices (nodes)} and \textbf{edges (connections)}. Graphs can be:
+\begin{itemize}
+    \item \textbf{Directed} (edges have a direction)
+    \item \textbf{Undirected} (bidirectional edges)
+\end{itemize}
+Edges may also have \textbf{weights} in weighted graphs.
+
+\subsection{Representing a Graph}
+Common representations:
+\begin{itemize}
+    \item \textbf{Adjacency List}: Best for sparse graphs. Each vertex stores a list of its neighbors.
+    \item \textbf{Adjacency Matrix}: Good for dense graphs, but can waste space.
+\end{itemize}
+
+\subsection{Summary of Key Methods}
+\begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Method} & \textbf{Purpose} & \textbf{Time Complexity} \\
+    \hline
+    \texttt{add\_vertex} & Adds a new vertex & \textbf{O(1)} \\
+    \hline
+    \texttt{add\_edge} & Adds a bidirectional edge & \textbf{O(1)} \\
+    \hline
+    \texttt{remove\_edge} & Removes a bidirectional edge & \textbf{O(V)} \\
+    \hline
+    \texttt{remove\_vertex} & Removes a vertex and its connections & \textbf{O(V + E)} \\
+    \hline
+    \texttt{print\_graph} & Prints the adjacency list & \textbf{O(V + E)} \\
+    \hline
+\end{tabular}
+

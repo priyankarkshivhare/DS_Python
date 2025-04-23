@@ -31,10 +31,11 @@ class Graph():
 
     def remove_edge(self, v1, v2):
         """Remove an Edge from the Graph"""
-        if v2 in self.adj_list[v1] and v1 in self.adj_list[v2]:
-            self.adj_list[v1].remove(v2)
-            self.adj_list[v2].remove(v1)
-            return True
+        if v1 in self.adj_list and v2 in self.adj_list:
+            if v2 in self.adj_list[v1] and v1 in self.adj_list[v2]:
+                self.adj_list[v1].remove(v2)
+                self.adj_list[v2].remove(v1)
+                return True
         return False
 
     def remove_vertex(self, v1):
