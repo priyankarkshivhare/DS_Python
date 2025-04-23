@@ -35,4 +35,3 @@ def first_non_repeating_char(my_string):
 print( first_non_repeating_char('leetcode') )
 print( first_non_repeating_char('hello') )
 print( first_non_repeating_char('aabbcc') )
-

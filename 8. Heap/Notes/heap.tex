@@ -1,0 +1,98 @@
+\section{Heap Data Structure: An In-Depth Overview}
+
+\subsection{What Is a Heap?}
+
+A \textbf{heap} is a specialized tree-based data structure that satisfies the \textbf{heap property}:
+
+\begin{itemize}
+    \item \textbf{Complete Binary Tree}: All levels are fully filled except possibly the last, which is filled from left to right.
+    \item \textbf{Heap Property}:
+    \begin{itemize}
+        \item \textbf{Max-Heap}: Each parent node is greater than or equal to its child nodes.
+        \item \textbf{Min-Heap}: Each parent node is less than or equal to its child nodes.
+    \end{itemize}
+\end{itemize}
+
+Heaps are commonly implemented as arrays, where the parent-child relationships are determined by index calculations:
+\begin{itemize}
+    \item \textbf{Parent Index}: $\left\lfloor \frac{i - 1}{2} \right\rfloor$
+    \item \textbf{Left Child Index}: $2 \cdot i + 1$
+    \item \textbf{Right Child Index}: $2 \cdot i + 2$
+\end{itemize}
+
+\subsection{Core Operations}
+
+\subsubsection{Insertion (Bubble Up / Heapify Up)}
+
+To insert an element:
+
+\begin{enumerate}
+    \item Add the element at the end of the heap (maintaining the complete binary tree property).
+    \item Compare the added element with its parent; if the heap property is violated, swap them.
+    \item Repeat step 2 until the heap property is restored.
+\end{enumerate}
+
+This operation ensures that the smallest (or largest) element percolates to the top in a min-heap (or max-heap).
+
+\subsubsection{Removal (Sink Down / Heapify Down)}
+
+To remove the root element:
+
+\begin{enumerate}
+    \item Replace the root with the last element in the heap.
+    \item Remove the last element.
+    \item Compare the new root with its children; if the heap property is violated, swap it with the appropriate child.
+    \item Repeat step 3 until the heap property is restored.
+\end{enumerate}
+
+This process ensures that the heap remains valid after the removal of the root.
+
+\subsubsection{Peek}
+
+Retrieve the root element (minimum in a min-heap or maximum in a max-heap) without removing it.
+
+\subsection{Heap Applications}
+
+\subsubsection{Priority Queues}
+
+Heaps are ideal for implementing priority queues, where elements with higher priority are served before others.
+
+\begin{itemize}
+    \item \textbf{Efficiency}: Insertion and removal operations have a time complexity of $O(\log n)$, and peeking has a time complexity of $O(1)$.
+\end{itemize}
+
+\subsubsection{Heap Sort}
+
+Heap sort is a comparison-based sorting technique that uses a binary heap data structure.
+
+\textbf{Algorithm}:
+\begin{enumerate}
+    \item Build a max-heap from the input data.
+    \item At this point, the largest item is stored at the root of the heap.
+    \item Replace it with the last item of the heap followed by reducing the size of the heap by one.
+    \item Heapify the root of the tree.
+    \item Repeat steps 3–4 until the size of the heap is greater than 1.
+\end{enumerate}
+
+\textbf{Time Complexity}: $O(n \log n)$
+
+\textbf{Space Complexity}: $O(1)$ (in-place sorting)
+
+\subsubsection{Graph Algorithms}
+
+Heaps are used in algorithms like Dijkstra's and Prim's for efficiently selecting the next vertex with the smallest (or largest) key.
+
+\subsection{Time and Space Complexity}
+
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Operation} & \textbf{Time Complexity} \\
+\hline
+Insertion & $O(\log n)$ \\
+Deletion  & $O(\log n)$ \\
+Peek      & $O(1)$ \\
+Search    & $O(n)$ \\
+\hline
+\end{tabular}
+
+\textbf{Space Complexity}: $O(n)$, where $n$ is the number of elements in the heap.

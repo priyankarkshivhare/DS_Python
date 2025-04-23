@@ -1,11 +1,5 @@
-\documentclass{thesisnotes}
-\begin{document}
-
-\begin{tcolorbox}[mytitlebox, title=Hash Tables]
-  Date: \today
-\end{tcolorbox}
-
-\section*{Introduction to Hash Tables}
+\section{Hash Tables}
+\subsection{Introduction to Hash Tables}
 
 A Hash Table (also known as a Hash Map) is a data structure used to store key-value pairs. It allows for efficient insertion, deletion, and lookup operations — ideally in constant time, O(1).
 
@@ -13,7 +7,7 @@ Think of a library where you have an index card that tells you exactly where a b
 This is similar to how a hash table retrieves data.
 
 
-\section*{Core Components}
+\subsection{Core Components}
 \begin{itemize}
     \item \textbf{\textit{Hash Function}}: A hash function takes a key (e.g., a string) and transforms it into a numeric address (an index) where the value is stored in an underlying list.
     \item \textbf{\textit{Data Map (Underlying Array)}}: An array (list) where each index is an addressable location for storing one or more key-value pairs.
@@ -21,14 +15,14 @@ This is similar to how a hash table retrieves data.
     or  A single key-value pair or a list of key-value pairs (in case of collisions)
 \end{itemize}
 
-\section*{Common Hash Table Methods}
+\subsection{Common Hash Table Methods}
 \begin{itemize}
     \item \texttt{set(key, value)}: Stores the value under the key.
     \item \texttt{get(key)}: Retrieves the value associated with the key.
     \item \texttt{keys()}: Returns all the keys.
 \end{itemize}
 
-\section*{Collisions}
+\subsection{Collisions}
 Two keys may hash to the same index. This is called a \textbf{collision}.
 
 \textbf{How to handle collisions?}
@@ -37,7 +31,7 @@ Two keys may hash to the same index. This is called a \textbf{collision}.
     \item \textbf{Open Addressing:} Find another empty index linearly or with some formula.
 \end{itemize}
 
-\section*{Big O Time Complexity}
+\subsection{Big O Time Complexity}
 \begin{center}
     \begin{tabular}{|l|c|c|c|}
         \hline
@@ -56,12 +50,10 @@ Two keys may hash to the same index. This is called a \textbf{collision}.
     \item With a good hash function and a large enough array, this is rare.
 \end{itemize}
 
-\section*{Real-world Examples}
+\subsection{Real-world Examples}
 \begin{itemize}
     \item Phone book (name $\rightarrow$ number).
     \item Caching.
     \item Databases.
     \item DNS resolution (domain $\rightarrow$ IP).
 \end{itemize}
-
-\end{document}

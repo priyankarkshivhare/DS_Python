@@ -1,13 +1,13 @@
 """
-Filename: bst_test.py
-Desription: Tests the BST code
+Filename: ht_test.py
+Desription: Tests the HT code
 Author: Priyankar Shivhare
-Date: April 12, 2025
+Date: April 17, 2025
 """
 from ht import HashTable
 
 def test_all_functions():
-    """Test Stack Functionality"""
+    """Test Hash Table Functionality"""
     try:
         my_ht = HashTable() # Test Construtor
         assert my_ht.data_map == [None, None, None, None, None, None, None]
