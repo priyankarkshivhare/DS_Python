@@ -1,3 +1,4 @@
+\usetikzlibrary{trees, positioning, arrows.meta}
 \section{Understanding Recursion and Its Applications}
 \subsection{What is Recursion?}
 
@@ -24,17 +25,7 @@ The factorial of a non-negative integer $n$ (denoted $n!$) is the product of all
     \item \textbf{Recursive Case:} $factorial(n) = n \times factorial(n - 1)$
 \end{itemize}
 
-\begin{verbatim}
-factorial(4)
-→ 4 * factorial(3)
-    → 3 * factorial(2)
-        → 2 * factorial(1)
-            → 1 * factorial(0)
-                → 1 (base case)
-\end{verbatim}
-\begin{center}
-    \includegraphics[width=5in]{../9. rBST/Notes/Assets/Call_Stack}
-\end{center}
+\input{../9. rBST/Notes/Assets/call_stack_visual.tex}
 
 \section{Recursive Binary Search Trees (rBST): Contains, Insert, and Delete Operations}
 
@@ -113,9 +104,7 @@ Deleting a node has three main cases:
         \item Recursively delete the in-order successor node.
     \end{itemize}
 \end{enumerate}
-\begin{center}
-    \includegraphics[width=5in]{../9. rBST/Notes/Assets/Node_Deletion_BST}    
-\end{center}
+\input{../9. rBST/Notes/Assets/Node_Deletion_BST.tex}
 \subsubsection*{Pseudocode}
 \begin{verbatim}
 def delete(value, current_node):

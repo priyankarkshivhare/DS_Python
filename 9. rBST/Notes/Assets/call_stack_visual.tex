@@ -1,0 +1,33 @@
+% Call stack visual
+\begin{tikzpicture}[
+    stack frame/.style={
+        rectangle, 
+        draw=orange!80, 
+        fill=orange!30, 
+        text width=4cm, 
+        minimum height=1cm, 
+        font=\ttfamily
+    },
+    return arrow/.style={->, thick, red},
+    label/.style={font=\small}
+]
+
+% Stack Frames (Top is factorial(0))
+\node[stack frame] (f4) at (0,0) {4! = 4 $\times$ 3!};
+\node[stack frame, above=of f4] (f3) {3! = 3 $\times$ 2!};
+\node[stack frame, above=of f3] (f2) {2! = 2 $\times$ 1!};
+\node[stack frame, above=of f2] (f1) {1! = 1 $\times$ 0!};
+\node[stack frame, above=of f1] (f0) {0! = 1 (Base case)};
+
+% Label the stacking phase
+\node[label, left=0.7cm of f4] {Call Stack Grows $\uparrow$};
+\node[label, left=0.7cm of f0] {Unwinds $\downarrow$};
+
+% Return arrows (return values pop from top to bottom)
+\draw[->, red, thick] (f0.east) -- ++(2,0) node[right] {returns 1};
+\draw[->, red, thick] (f1.east) -- ++(2,0) node[right] {1 × 1 = 1};
+\draw[->, red, thick] (f2.east) -- ++(2,0) node[right] {2 × 1 = 2};
+\draw[->, red, thick] (f3.east) -- ++(2,0) node[right] {3 × 2 = 6};
+\draw[->, red, thick] (f4.east) -- ++(2,0) node[right] {4 × 6 = 24};
+
+\end{tikzpicture}
