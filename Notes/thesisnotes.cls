@@ -24,6 +24,7 @@
 \def\DefaultHeightofCheckBox{0.6\baselineskip}
 \def\DefaultWidthofCheckBox{0.6\baselineskip}
 
+\RequirePackage{tikz}
 % Line spacing
 \onehalfspacing
 
